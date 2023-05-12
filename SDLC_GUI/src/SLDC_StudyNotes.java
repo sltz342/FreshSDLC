@@ -3,6 +3,7 @@
     The Study Notes gui portion
  */
 
+import java.util.Random;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
@@ -19,10 +20,12 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
      */
     public SLDC_StudyNotes() {
         initComponents();
+        fillData();
+        addNotes();
     }
 
     private SDLC_GUI MainMenu;
-    private ArrayList<String> StudyNotesData;
+    private ArrayList<String> StudyNotesData = new ArrayList();;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +40,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         btnReturn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNoteArea = new javax.swing.JTextArea();
+        btnRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +61,16 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         txtNoteArea.setEditable(false);
         txtNoteArea.setColumns(20);
         txtNoteArea.setRows(5);
+        txtNoteArea.setText("HEy");
         jScrollPane1.setViewportView(txtNoteArea);
+
+        btnRefresh.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,7 +80,8 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 369, Short.MAX_VALUE)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -78,7 +92,9 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -108,10 +124,15 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        fillData();
+        addNotes();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -139,22 +160,36 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SLDC_StudyNotes().setVisible(true);
+                fillData(); 
                 addNotes();
+                System.out.println("HEY IM WORKINGs HERE");
             }
         });
     }
     
-    public static void addNotes(){
-        String mainMessage;
-        
-        
-        
+    public void addNotes(){
+        String mainMessage = "";
+        for (int i = 0; i <4; i++){
+            mainMessage += StudyNotesData.get(randomNumber());
+            mainMessage += "\n";
+        }
+        txtNoteArea.setText(mainMessage);      
     }
     
-    
+    /**
+     * To generate random numbers and then return them.
+     * @return - the random number that was generated as a int.
+     */
+    public static int randomNumber() {
+        Random ran = new Random();
+        int ranNum;
+	//10 is the range
+        ranNum = ran.nextInt(10) + 1;
+        return ranNum;
+    }
     
     public void fillData() {
-        File f = new File("src/**PROJECT NAME**/**FILENAME**.txt");
+        File f = new File("src/dataFiles/StudyNotes.txt");
         try {
             Scanner s = new Scanner(f);
             while(s.hasNextLine()){
@@ -168,6 +203,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnReturn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
