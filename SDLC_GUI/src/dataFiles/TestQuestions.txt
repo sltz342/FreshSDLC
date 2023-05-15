@@ -5,9 +5,9 @@ Henry Gantt Invented the Gantt Chart in which time period?
 1990s
 2
 What was the name of the chart invented by a specific mechanical engineer in 1910s?
-Henry Grant
+Henry Grantt
 Henry Gantt
-Genry Hant
+Genry Hantt
 Steve Jobs
 1
 Which is true about the Software Development Process?
@@ -16,45 +16,45 @@ The SDLC is used for little fun projects
 The SDLC is not very widely used
 All of the above
 0
-Question 4
-A
-B
-C
-D
-4
-Question 5
-A
-B
-C
-D
-4
-Question 6
-A
-B
-C
-D
-4
-Question 7
-A
-B
-C
-D
-4
-Question 8
-A
-B
-C
-D
-4
-Question 9
-A
-B
-C
-D
-4
-Question 10
-A
-B
-C
-D
-4
+What does SDLC stand for?
+Software Degree Learning Community
+Silly Dudes Like Cauliflower 
+System Development Life Cycle
+Software Development Life Cycle
+3
+Which one of these is NOT a stage of the Waterfall model?
+Analysis
+Testing
+Problem Statement
+Efficiency Checking
+3
+Which one of these is NOT an element of the System?
+Overseers
+Analysts
+Testers
+Clients
+0
+What does UML stand for?
+Unity Modelling Language
+Unified Moderation Language
+Unified Modelling Language
+United Mellow Lamp
+2
+What is the name of the model that Dr. Winston Royce developed in 1970?
+Unified Model
+Waterfall Model
+Working Model
+Software Development Model
+1
+What was the initial purpose of the Waterfall Model? 
+Spacecraft mission planning
+Fishing planning
+Boating planning
+Work day planning
+0
+Who has used the Gantt Chart in the past?
+Dr. Winston Royce
+Taylor Swift
+Brittany Spears
+Hoover Dam
+3
