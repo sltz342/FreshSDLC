@@ -62,6 +62,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         txtNoteArea.setColumns(20);
         txtNoteArea.setLineWrap(true);
         txtNoteArea.setRows(5);
+        txtNoteArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtNoteArea);
 
         btnRefresh.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -170,6 +171,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
     public void addNotes(){
         String mainMessage = "";
         for (int i = 0; i <4; i++){
+            mainMessage += (i+1) + ": ";
             mainMessage += StudyNotesData.get(randomNumber());
             mainMessage += "\n";
         }
@@ -184,7 +186,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         Random ran = new Random();
         int ranNum;
 	//10 is the range
-        ranNum = ran.nextInt(8);
+        ranNum = ran.nextInt(10);
         return ranNum;
     }
     

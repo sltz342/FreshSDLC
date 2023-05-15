@@ -16,6 +16,7 @@ public class SDLC_QuizMenu extends javax.swing.JFrame {
     }
 
     private SDLC_GUI MainMenu;
+    private SDLC_TrueQuiz QuizStart;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,7 +96,11 @@ public class SDLC_QuizMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQuizBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizBeginActionPerformed
-        // TODO add your handling code here:
+        if(QuizStart == null){
+            QuizStart = new SDLC_TrueQuiz(); 
+        }
+        QuizStart.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnQuizBeginActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
