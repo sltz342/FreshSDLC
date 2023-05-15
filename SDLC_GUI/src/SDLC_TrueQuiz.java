@@ -82,7 +82,7 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     }
     
     public void fillData() {
-        File f = new File("src/dataFiles/StudyNotes.txt");
+        File f = new File("src/dataFiles/TestQuestions.txt");
         try {
             Scanner s = new Scanner(f);
             while(s.hasNextLine()){
