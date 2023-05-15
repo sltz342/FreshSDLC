@@ -1,7 +1,6 @@
 /*  Sean M. + Dina M.
     May 11th - 17th, 2023
     A project about team management but that's not really an issue i bet. no
- */
 
 /**
  *
@@ -15,8 +14,10 @@ public class SDLC_GUI extends javax.swing.JFrame {
     public SDLC_GUI() {
         initComponents();
     }
-
+    
     private SLDC_StudyNotes StudyNotes;
+    private SDLC_QuizMenu QuizMenu;
+    private SDLC_Credits CreditMenu;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,7 +138,11 @@ public class SDLC_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartQuizActionPerformed
-        // TODO add your handling code here:
+        if(QuizMenu == null){
+            QuizMenu = new SDLC_QuizMenu(); 
+        }
+        QuizMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnStartQuizActionPerformed
 
     private void btnStudyNotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudyNotesActionPerformed
@@ -146,11 +151,14 @@ public class SDLC_GUI extends javax.swing.JFrame {
         }
         StudyNotes.setVisible(true);
         this.setVisible(false);
-        
     }//GEN-LAST:event_btnStudyNotesActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
-        // TODO add your handling code here:
+        if(CreditMenu == null){
+            CreditMenu = new SDLC_Credits(); 
+        }
+        CreditMenu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed

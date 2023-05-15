@@ -60,8 +60,8 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
 
         txtNoteArea.setEditable(false);
         txtNoteArea.setColumns(20);
+        txtNoteArea.setLineWrap(true);
         txtNoteArea.setRows(5);
-        txtNoteArea.setText("HEy");
         jScrollPane1.setViewportView(txtNoteArea);
 
         btnRefresh.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -102,7 +102,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -184,7 +184,7 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         Random ran = new Random();
         int ranNum;
 	//10 is the range
-        ranNum = ran.nextInt(10) + 1;
+        ranNum = ran.nextInt(8);
         return ranNum;
     }
     

@@ -44,7 +44,6 @@ abstract public class Question extends Test {
     /**
      * Checks for correctness when a user inputs an answer on a question
      *
-     * @param userInput - the button (of 4) chosen by the user
      * @return true/false depending on if the index of the correct answer aligns
      * with the userInput index
      */
