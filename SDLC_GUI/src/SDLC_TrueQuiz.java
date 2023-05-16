@@ -33,13 +33,13 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         MultipleChoice = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        lblQuestion = new javax.swing.JLabel();
+        lblQuestionText = new javax.swing.JLabel();
+        btnQuestion1 = new javax.swing.JRadioButton();
+        btnQuestion2 = new javax.swing.JRadioButton();
+        btnQuestion3 = new javax.swing.JRadioButton();
+        btnQuestion4 = new javax.swing.JRadioButton();
+        btnCheckAndProceed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,35 +49,40 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Question #X");
+        lblQuestion.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lblQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuestion.setText("Question #X");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Why do I look this fire all the time, hot damn?");
+        lblQuestionText.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        lblQuestionText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQuestionText.setText("Why do I look this fire all the time, hot damn?");
 
-        MultipleChoice.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        jRadioButton1.setText("Cause I'm too hot");
-
-        MultipleChoice.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        jRadioButton2.setText("Hot damn");
-
-        MultipleChoice.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        jRadioButton3.setText("call the police");
-
-        MultipleChoice.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
-        jRadioButton4.setText("or the fireman");
-
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButton1.setText("funky town ig");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MultipleChoice.add(btnQuestion1);
+        btnQuestion1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQuestion1.setText("Cause I'm too hot");
+        btnQuestion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnQuestion1ActionPerformed(evt);
+            }
+        });
+
+        MultipleChoice.add(btnQuestion2);
+        btnQuestion2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQuestion2.setText("Hot damn");
+
+        MultipleChoice.add(btnQuestion3);
+        btnQuestion3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQuestion3.setText("call the police");
+
+        MultipleChoice.add(btnQuestion4);
+        btnQuestion4.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQuestion4.setText("or the fireman");
+
+        btnCheckAndProceed.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnCheckAndProceed.setText("funky town ig");
+        btnCheckAndProceed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckAndProceedActionPerformed(evt);
             }
         });
 
@@ -85,40 +90,40 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblQuestionText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3))
+                    .addComponent(btnQuestion1)
+                    .addComponent(btnQuestion3))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnQuestion4)
+                    .addComponent(btnQuestion2))
+                .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(111, 111, 111)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(btnCheckAndProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblQuestionText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
+                    .addComponent(btnQuestion2)
+                    .addComponent(btnQuestion1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(btnQuestion3)
+                    .addComponent(btnQuestion4))
+                .addGap(18, 18, 18)
+                .addComponent(btnCheckAndProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,9 +144,13 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCheckAndProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAndProceedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCheckAndProceedActionPerformed
+
+    private void btnQuestion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuestion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQuestion1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +187,10 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         });
     }
     
+    public void nextQuestion(){
+        
+    }
+    
     public void fillData() {
         File f = new File("src/dataFiles/TestQuestions.txt");
         try {
@@ -194,14 +207,14 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup MultipleChoice;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCheckAndProceed;
+    private javax.swing.JRadioButton btnQuestion1;
+    private javax.swing.JRadioButton btnQuestion2;
+    private javax.swing.JRadioButton btnQuestion3;
+    private javax.swing.JRadioButton btnQuestion4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JLabel lblQuestion;
+    private javax.swing.JLabel lblQuestionText;
     // End of variables declaration//GEN-END:variables
 }
