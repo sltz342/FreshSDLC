@@ -3,10 +3,12 @@
     The Actual Quiz Code, this is going to suck to fix
  */
 
+import classclass.Test;
+import classclass.Question;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +16,16 @@ import java.util.ArrayList;
  */
 public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
+    private static ArrayList<String> TestQ = new ArrayList();
+    private static ArrayList<Question> questions = new ArrayList();
+    private static Test test = new Test(questions);
+
     /**
      * Creates new form SDLC_TrueQuiz
      */
     public SDLC_TrueQuiz() {
         initComponents();
+        fillData();
     }
 
     /**
@@ -31,58 +38,58 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     private void initComponents() {
 
         MultipleChoice = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblQuestion = new javax.swing.JLabel();
-        lblQuestionText = new javax.swing.JLabel();
-        btnQuestion1 = new javax.swing.JRadioButton();
-        btnQuestion2 = new javax.swing.JRadioButton();
-        btnQuestion3 = new javax.swing.JRadioButton();
-        btnQuestion4 = new javax.swing.JRadioButton();
-        btnCheckAndProceed = new javax.swing.JButton();
+        lblQNum = new javax.swing.JLabel();
+        lblQText = new javax.swing.JLabel();
+        btnQ1 = new javax.swing.JRadioButton();
+        btnQ2 = new javax.swing.JRadioButton();
+        btnQ3 = new javax.swing.JRadioButton();
+        btnQ4 = new javax.swing.JRadioButton();
+        btnProceed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quiz Begin");
+        lblTitle.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Quiz Begin");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblQuestion.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        lblQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQuestion.setText("Question #X");
+        lblQNum.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lblQNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQNum.setText("Question #X");
 
-        lblQuestionText.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-        lblQuestionText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQuestionText.setText("Why do I look this fire all the time, hot damn?");
+        lblQText.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        lblQText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQText.setText("Why do I look this fire all the time, hot damn?");
 
-        MultipleChoice.add(btnQuestion1);
-        btnQuestion1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQuestion1.setText("Cause I'm too hot");
-        btnQuestion1.addActionListener(new java.awt.event.ActionListener() {
+        MultipleChoice.add(btnQ1);
+        btnQ1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQ1.setText("Cause I'm too hot");
+        btnQ1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuestion1ActionPerformed(evt);
+                btnQ1ActionPerformed(evt);
             }
         });
 
-        MultipleChoice.add(btnQuestion2);
-        btnQuestion2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQuestion2.setText("Hot damn");
+        MultipleChoice.add(btnQ2);
+        btnQ2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQ2.setText("Hot damn");
 
-        MultipleChoice.add(btnQuestion3);
-        btnQuestion3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQuestion3.setText("call the police");
+        MultipleChoice.add(btnQ3);
+        btnQ3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQ3.setText("call the police");
 
-        MultipleChoice.add(btnQuestion4);
-        btnQuestion4.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQuestion4.setText("or the fireman");
+        MultipleChoice.add(btnQ4);
+        btnQ4.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        btnQ4.setText("or the fireman");
 
-        btnCheckAndProceed.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnCheckAndProceed.setText("funky town ig");
-        btnCheckAndProceed.addActionListener(new java.awt.event.ActionListener() {
+        btnProceed.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnProceed.setText("funky town ig");
+        btnProceed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCheckAndProceedActionPerformed(evt);
+                btnProceedActionPerformed(evt);
             }
         });
 
@@ -90,39 +97,39 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblQuestionText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblQText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblQNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuestion1)
-                    .addComponent(btnQuestion3))
+                    .addComponent(btnQ1)
+                    .addComponent(btnQ3))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuestion4)
-                    .addComponent(btnQuestion2))
+                    .addComponent(btnQ4)
+                    .addComponent(btnQ2))
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(111, 111, 111)
-                .addComponent(btnCheckAndProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblQNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQuestionText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblQText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuestion2)
-                    .addComponent(btnQuestion1))
+                    .addComponent(btnQ2)
+                    .addComponent(btnQ1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQuestion3)
-                    .addComponent(btnQuestion4))
+                    .addComponent(btnQ3)
+                    .addComponent(btnQ4))
                 .addGap(18, 18, 18)
-                .addComponent(btnCheckAndProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -131,12 +138,12 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -144,13 +151,13 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCheckAndProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckAndProceedActionPerformed
+    private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCheckAndProceedActionPerformed
+    }//GEN-LAST:event_btnProceedActionPerformed
 
-    private void btnQuestion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuestion1ActionPerformed
+    private void btnQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnQuestion1ActionPerformed
+    }//GEN-LAST:event_btnQ1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,38 +190,69 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SDLC_TrueQuiz().setVisible(true);
+                fillData();
             }
         });
     }
-    
-    public void nextQuestion(){
-        
-    }
-    
-    public void fillData() {
-        File f = new File("src/dataFiles/TestQuestions.txt");
-        try {
-            Scanner s = new Scanner(f);
-            while(s.hasNextLine()){
-                //Suck my cock n balls ig?
-            }
-            
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR: " + e);
-        }
+
+    public void nextQuestion() {
 
     }
+
+    /**
+     * public void fillData() { File f = new
+     * File("src/dataFiles/TestQuestions.txt"); try { Scanner s = new
+     * Scanner(f); while(s.hasNextLine()){ //Suck my cock n balls ig? }
+     *
+     * } catch (FileNotFoundException e) { System.out.println("ERROR: " + e); }
+     *
+     * }
+     * *
+     */
+    public static void fillData() {
+        Question q = new Question();
+        ArrayList<String> diffAns = new ArrayList();
+        int size;
+        int i = 0;
+
+        try {
+            InputStream in = SDLC_TrueQuiz.class.getResourceAsStream("TestQuestions.txt");
+            Scanner s = new Scanner(in);
+            size = Integer.valueOf(s.nextLine());  
+            while ( s.hasNextLine() ) {
+                // Fill a new question object with the text of the question
+                q.setText(s.nextLine());
+                // Adding the different answers
+                diffAns.add(i, s.nextLine());
+                diffAns.add(i, s.nextLine());
+                diffAns.add(i, s.nextLine());
+                diffAns.add(i, s.nextLine());
+                // Adding different answers ArrayList to question object
+                q.setDiffAns(diffAns);
+                // Marking the correct answer as an integer
+                q.setCorrectAns(Integer.valueOf(s.nextLine()));
+                // Add question object to arrayList
+                questions.add(i, q);
+                i++;
+            }
+            System.out.println(questions);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error reading file! ");
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup MultipleChoice;
-    private javax.swing.JButton btnCheckAndProceed;
-    private javax.swing.JRadioButton btnQuestion1;
-    private javax.swing.JRadioButton btnQuestion2;
-    private javax.swing.JRadioButton btnQuestion3;
-    private javax.swing.JRadioButton btnQuestion4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnProceed;
+    private javax.swing.JRadioButton btnQ1;
+    private javax.swing.JRadioButton btnQ2;
+    private javax.swing.JRadioButton btnQ3;
+    private javax.swing.JRadioButton btnQ4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblQuestion;
-    private javax.swing.JLabel lblQuestionText;
+    private javax.swing.JLabel lblQNum;
+    private javax.swing.JLabel lblQText;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

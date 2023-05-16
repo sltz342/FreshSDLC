@@ -6,12 +6,11 @@ package classclass;
 import java.util.ArrayList;
 import javax.swing.JRadioButton;
 
-abstract public class Question extends Test {
+ public class Question {
 
     //Declaring variable
     private String text;
     private ArrayList<String> diffAns;
-    private ArrayList<String> feedback;
     private int correctAns;
     private int userInput;
 
@@ -21,23 +20,28 @@ abstract public class Question extends Test {
     public Question() {
         text = null;
         diffAns = null;
-        feedback = null;
+    }
+    
+    /**
+     * Secondary constructor
+     * @param text - the text for the question
+     */
+    public Question(String text) {
+        this.text = text;
+        diffAns = null;
     }
 
     /**
-     * Secondary Constructor
+     * Tertiary Constructor
      *
      * @param text - the question appearing to the user
      * @param diffAns - an ArrayList containing the different choices
-     * @param feedback - an ArrayList containing the feedback for why each
-     * incorrect answer is incorrect
      * @param correctAns - the index of the correct answer sfor the diffAns
      * array
      */
-    public Question(String text, ArrayList<String> diffAns, ArrayList<String> feedback, int correctAns) {
+    public Question(String text, ArrayList<String> diffAns, int correctAns) {
         this.text = text;
         this.diffAns = diffAns;
-        this.feedback = feedback;
         this.correctAns = correctAns;
     }
 
@@ -52,19 +56,6 @@ abstract public class Question extends Test {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Returns the feedback string corresponding to the question specified, solong that it's not the
-     * correct answer
-     * @param index - the question specified
-     * @return 
-     */
-    public String returnFeeback(int index) {
-        if ( index != correctAns ) {
-            return feedback.get(correctAns);
-        }
-        return "N/A";
     }
     
     // Getters & Setters
@@ -103,22 +94,6 @@ abstract public class Question extends Test {
     
     /**
      * Accessor
-     * @return the ArrayList containing feedback 
-     */
-    public ArrayList<String> getFeedback() {
-        return feedback;
-    }
-    
-    /**
-     * Mutator
-     * @param f - new ArrayList per question 
-     */
-    public void setFeedback(ArrayList<String> f ) {
-        feedback = f;
-    }
-    
-    /**
-     * Accessor
      * @return the index of the correct answer
      */
     public int getCorrectAns() {
@@ -149,9 +124,12 @@ abstract public class Question extends Test {
         userInput = u;
     }
     
+    /**
+     * Text representation of a given question
+     * @return the block of text representing the question
+     */
     public String toString() {
-        return "Question: " + text + "\n 1: " + diffAns.get(0) + "\n2: " + diffAns.get(1) + "\n3: " + diffAns.get(2)
-                + "\n4: " + diffAns.get(3) + "\nFeedback: \n1: " + feedback.get(0)  + "\n2: " + feedback.get(1) + "\n3: " + feedback.get(2) 
-                + "\n4: " + feedback.get(3) + "\nCorrect Answer: " + correctAns + "\nCurrent selected answer: " + userInput;
+        return "\nQuestion: " + text + "\n 1: " + diffAns.get(0) + "\n2: " + diffAns.get(1) + "\n3: " + diffAns.get(2)
+                + "\n4: " + diffAns.get(3) + "\nCorrect Answer: " + correctAns + "\nCurrent selected answer: " + userInput;
     }
 }

@@ -5,9 +5,9 @@
 
 import java.util.Random;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,7 +25,9 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
     }
 
     private SDLC_GUI MainMenu;
-    private ArrayList<String> StudyNotesData = new ArrayList();;
+    private ArrayList<String> StudyNotesData = new ArrayList();
+
+    ;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,8 +120,8 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        if(MainMenu == null){
-            MainMenu = new SDLC_GUI(); 
+        if (MainMenu == null) {
+            MainMenu = new SDLC_GUI();
         }
         MainMenu.setVisible(true);
         this.setVisible(false);
@@ -161,47 +163,58 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SLDC_StudyNotes().setVisible(true);
-                fillData(); 
+                fillData();
                 addNotes();
                 System.out.println("HEY IM WORKINGs HERE");
             }
         });
     }
-    
-    public void addNotes(){
+
+    public void addNotes() {
         String mainMessage = "";
-        for (int i = 0; i <4; i++){
-            mainMessage += (i+1) + ": ";
+        for (int i = 0; i < 4; i++) {
+            mainMessage += (i + 1) + ": ";
             mainMessage += StudyNotesData.get(randomNumber());
             mainMessage += "\n";
         }
-        txtNoteArea.setText(mainMessage);      
+        txtNoteArea.setText(mainMessage);
     }
-    
+
     /**
      * To generate random numbers and then return them.
+     *
      * @return - the random number that was generated as a int.
      */
-    public static int randomNumber() {
+    public int randomNumber() {
         Random ran = new Random();
         int ranNum;
-	//10 is the range
-        ranNum = ran.nextInt(10);
+        //10 is the range
+        ranNum = ran.nextInt(StudyNotesData.size());
         return ranNum;
     }
-    
-    public void fillData() {
-        File f = new File("src/dataFiles/StudyNotes.txt");
-        try {
-            Scanner s = new Scanner(f);
-            while(s.hasNextLine()){
-                StudyNotesData.add(s.nextLine());
-            }
-            
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR: " + e);
-        }
 
+    /**
+     * public void fillData() { File f = new
+     * File("src/dataFiles/StudyNotes.txt"); try { Scanner s = new Scanner(f);
+     * while(s.hasNextLine()){ StudyNotesData.add(s.nextLine()); }
+     *
+     * } catch (FileNotFoundException e) { System.out.println("ERROR: " + e); }
+     *
+     * }
+     * marked as a comment incase something fucks up whoopee!!!!!!!!
+     */
+    
+    /**
+     * Gets study note information from a text file
+     */
+    public void fillData() {
+        try {
+            InputStream in = SLDC_StudyNotes.class.getResourceAsStream("StudyNotes.txt");
+            Scanner s = new Scanner(in);
+            while(s.hasNextLine()){ StudyNotesData.add(s.nextLine()); }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error reading file! ");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
