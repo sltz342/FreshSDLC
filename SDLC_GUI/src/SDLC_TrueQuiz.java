@@ -62,11 +62,13 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
         lblQText.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         lblQText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQText.setText("Why do I look this fire all the time, hot damn?");
+        lblQText.setText("Question Text");
+        lblQText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         MultipleChoice.add(btnQ1);
         btnQ1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQ1.setText("Cause I'm too hot");
+        btnQ1.setSelected(true);
+        btnQ1.setText("A");
         btnQ1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQ1ActionPerformed(evt);
@@ -75,18 +77,24 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
         MultipleChoice.add(btnQ2);
         btnQ2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQ2.setText("Hot damn");
+        btnQ2.setText("B");
+        btnQ2.setToolTipText("");
+        btnQ2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQ2ActionPerformed(evt);
+            }
+        });
 
         MultipleChoice.add(btnQ3);
         btnQ3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQ3.setText("call the police");
+        btnQ3.setText("C");
 
         MultipleChoice.add(btnQ4);
         btnQ4.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        btnQ4.setText("or the fireman");
+        btnQ4.setText("D");
 
         btnProceed.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        btnProceed.setText("funky town ig");
+        btnProceed.setText("Submit Answer");
         btnProceed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProceedActionPerformed(evt);
@@ -100,18 +108,18 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             .addComponent(lblQText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblQNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQ1)
-                    .addComponent(btnQ3))
-                .addGap(55, 55, 55)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQ4)
-                    .addComponent(btnQ2))
-                .addContainerGap(52, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnQ1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(btnQ3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnQ4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(btnQ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -119,18 +127,18 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lblQNum, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQText, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQ2)
-                    .addComponent(btnQ1))
-                .addGap(18, 18, 18)
+                .addComponent(lblQText, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnQ1)
+                    .addComponent(btnQ2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnQ3)
                     .addComponent(btnQ4))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,7 +153,8 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -158,6 +167,10 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     private void btnQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnQ1ActionPerformed
+
+    private void btnQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnQ2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +209,9 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     }
 
     public void nextQuestion() {
-
+        int i = 0;
+        lblQNum.setText("Question #" + (i+1));
+        lblQText.setText()
     }
 
     /**
@@ -218,7 +233,6 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         try {
             InputStream in = SDLC_TrueQuiz.class.getResourceAsStream("TestQuestions.txt");
             Scanner s = new Scanner(in);
-            size = Integer.valueOf(s.nextLine());  
             while ( s.hasNextLine() ) {
                 // Fill a new question object with the text of the question
                 q.setText(s.nextLine());
