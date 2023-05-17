@@ -4,7 +4,6 @@
 package classclass;
 
 import java.util.ArrayList;
-import javax.swing.JRadioButton;
 
  public class Question {
 
@@ -51,7 +50,7 @@ import javax.swing.JRadioButton;
      * @return true/false depending on if the index of the correct answer aligns
      * with the userInput index
      */
-    public boolean isCorrect() {
+    public boolean isCorrect(int userInput) {
         if (userInput == correctAns) {
             return true;
         }

@@ -3,7 +3,6 @@
     The Actual Quiz Code, this is going to suck to fix
  */
 
-import classclass.Test;
 import classclass.Question;
 import java.util.Scanner;
 import java.io.InputStream;
@@ -16,12 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
+    private SDLC_GUI MainMenu;
     private static ArrayList<String> TestQ = new ArrayList();
     private static ArrayList<Question> questions = new ArrayList();
     private static ArrayList<String> temp = new ArrayList();
-    private static Test test = new Test(questions);
     int qCount = 0;
     int score = 0;
+    int k = 0;
+    boolean goMenu = false;
 
     /**
      * Creates new form SDLC_TrueQuiz
@@ -52,6 +53,7 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         btnQ3 = new javax.swing.JRadioButton();
         btnQ4 = new javax.swing.JRadioButton();
         btnProceed = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +108,15 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             }
         });
 
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnSubmit.setText("Submit Score");
+        btnSubmit.setEnabled(false);
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,19 +124,23 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             .addComponent(lblQText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblQNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnQ1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(btnQ3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnQ4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                    .addComponent(btnQ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(312, Short.MAX_VALUE)
-                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(294, 294, 294))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnQ1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(btnQ3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnQ4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                            .addComponent(btnQ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(312, Short.MAX_VALUE)
+                        .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(133, 133, 133)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,8 +157,10 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
                     .addComponent(btnQ3)
                     .addComponent(btnQ4))
                 .addGap(32, 32, 32)
-                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,11 +186,19 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
         // log answer
         // Ensuring questions don't go past 10
-        if (qCount < 10) {
+        if (qCount < 9) {
+            if (questions.get(qCount).isCorrect(btnCheck()) == true) {
+                score++;
+            }
             qCount++;
+            System.out.println(score);
             nextQuestion(qCount);
-        } else {
 
+        } else {
+            lblQNum.setText("Finished");
+            lblQText.setText("You're all done! Click \"Submit Score\" to check your score.");
+            btnProceed.setEnabled(false);
+            btnSubmit.setEnabled(true);
         }
 
     }//GEN-LAST:event_btnProceedActionPerformed
@@ -185,6 +210,27 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     private void btnQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ2ActionPerformed
 
     }//GEN-LAST:event_btnQ2ActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        if (goMenu) {
+
+            if (MainMenu == null) {
+                MainMenu = new SDLC_GUI();
+            }
+            MainMenu.setVisible(true);
+            this.setVisible(false);
+
+        } else {
+            k++;
+            if (score > 5) {
+                lblQNum.setText("Congrats! Passed!");
+            } else {
+                lblQNum.setText("Study harder...");
+            }
+            lblQText.setText("Score: " + score + "\n Click Submit again to return to main menu and reset the test.");
+        }
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,10 +283,22 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     }
 
     /**
-     * Logs the answer set by the user as true/false
+     * Assigns an integer to a corresponding button clicked. Used to check for
+     * correct answers
+     *
+     * @return the number respective to the button #
      */
-    public void logAns() {
-        
+    public int btnCheck() {
+        if (btnQ1.isSelected()) {
+            return 0;
+        } else if (btnQ2.isSelected()) {
+            return 1;
+        } else if (btnQ3.isSelected()) {
+            return 2;
+        } else if (btnQ4.isSelected()) {
+            return 3;
+        }
+        return -1;
     }
 
     /**
@@ -264,7 +322,6 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
                 temp.add(i, s.nextLine());
                 i++;
             }
-            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error reading file! ");
@@ -278,7 +335,7 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         Question q;
         ArrayList<String> diffAns;
         // setting an initial size for the array
-        
+
         int j = 0;
         // Looping for the size of the temporary array previously filled when reading the data file
         for (int i = 0; i < temp.size(); i++) {
@@ -302,9 +359,8 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             // Add question object to arrayList
             questions.add(j, q);
             j++;
-            
+
         }
-        
 
     }
 
@@ -316,6 +372,7 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnQ2;
     private javax.swing.JRadioButton btnQ3;
     private javax.swing.JRadioButton btnQ4;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblQNum;
     private javax.swing.JLabel lblQText;
