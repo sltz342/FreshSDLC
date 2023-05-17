@@ -66,11 +66,6 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="lblQText" alignment="0" max="32767" attributes="0"/>
               <Component id="lblQNum" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                  <Component id="btnProceed" min="-2" pref="151" max="-2" attributes="0"/>
-                  <EmptySpace pref="103" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -83,6 +78,11 @@
                       <Component id="btnQ2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="312" max="32767" attributes="0"/>
+                  <Component id="btnProceed" min="-2" pref="151" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -102,9 +102,9 @@
                       <Component id="btnQ3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnQ4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="btnProceed" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

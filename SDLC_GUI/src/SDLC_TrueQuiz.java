@@ -18,7 +18,10 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
 
     private static ArrayList<String> TestQ = new ArrayList();
     private static ArrayList<Question> questions = new ArrayList();
+    private static ArrayList<String> temp = new ArrayList();
     private static Test test = new Test(questions);
+    int qCount = 0;
+    int score = 0;
 
     /**
      * Creates new form SDLC_TrueQuiz
@@ -26,6 +29,8 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     public SDLC_TrueQuiz() {
         initComponents();
         fillData();
+        fillQuestions();
+        nextQuestion(0);
     }
 
     /**
@@ -108,10 +113,6 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             .addComponent(lblQText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblQNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnQ1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
@@ -121,6 +122,10 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
                     .addComponent(btnQ4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                     .addComponent(btnQ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(312, Short.MAX_VALUE)
+                .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(294, 294, 294))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +141,9 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnQ3)
                     .addComponent(btnQ4))
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addComponent(btnProceed, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,15 +166,24 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        // TODO add your handling code here:
+
+        // log answer
+        // Ensuring questions don't go past 10
+        if (qCount < 10) {
+            qCount++;
+            nextQuestion(qCount);
+        } else {
+
+        }
+
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void btnQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnQ1ActionPerformed
 
     private void btnQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQ2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnQ2ActionPerformed
 
     /**
@@ -209,12 +223,24 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
     }
 
     /**
-     * Setting all buttons and texts to the appr
+     * Setting all buttons and texts to the corresponding Strings stored in the
+     * arrays
      */
-    public void nextQuestion() {
-        int i = 0;
-        lblQNum.setText("Question #" + (i+1));
+    public void nextQuestion(int i) {
+        lblQNum.setText("Question #" + (i + 1));
         lblQText.setText((questions.get(i).getText()));
+        btnQ1.setText(questions.get(i).getDiffAns().get(0));
+        btnQ2.setText(questions.get(i).getDiffAns().get(1));
+        btnQ3.setText(questions.get(i).getDiffAns().get(2));
+        btnQ4.setText(questions.get(i).getDiffAns().get(3));
+
+    }
+
+    /**
+     * Logs the answer set by the user as true/false
+     */
+    public void logAns() {
+        
     }
 
     /**
@@ -228,35 +254,58 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
      * *
      */
     public static void fillData() {
-        Question q = new Question();
-        ArrayList<String> diffAns = new ArrayList();
-        int size;
         int i = 0;
 
         try {
             InputStream in = SDLC_TrueQuiz.class.getResourceAsStream("TestQuestions.txt");
             Scanner s = new Scanner(in);
-            while ( s.hasNextLine() ) {
-                // Fill a new question object with the text of the question
-                q.setText(s.nextLine());
-                // Adding the different answers
-                diffAns.add(i, s.nextLine());
-                diffAns.add(i, s.nextLine());
-                diffAns.add(i, s.nextLine());
-                diffAns.add(i, s.nextLine());
-                // Adding different answers ArrayList to question object
-                q.setDiffAns(diffAns);
-                // Marking the correct answer as an integer
-                q.setCorrectAns(Integer.valueOf(s.nextLine()));
-                // Add question object to arrayList
-                questions.add(i, q);
+            // Filling a temporary array to feed through to a question array
+            while (s.hasNextLine()) {
+                temp.add(i, s.nextLine());
                 i++;
             }
-            System.out.println(questions);
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error reading file! ");
         }
+    }
+
+    /**
+     * Fills the questions array to be utilized by the test
+     */
+    public static void fillQuestions() {
+        Question q;
+        ArrayList<String> diffAns;
+        // setting an initial size for the array
+        
+        int j = 0;
+        // Looping for the size of the temporary array previously filled when reading the data file
+        for (int i = 0; i < temp.size(); i++) {
+            q = new Question();
+            diffAns = new ArrayList();
+            q.setText(temp.get(i));
+            i++;
+            // Adding the different answers
+            diffAns.add(temp.get(i));
+            i++;
+            diffAns.add(temp.get(i));
+            i++;
+            diffAns.add(temp.get(i));
+            i++;
+            diffAns.add(temp.get(i));
+            i++;
+            // Adding different answers ArrayList to question object
+            q.setDiffAns(diffAns);
+            // Marking the correct answer as an integer
+            q.setCorrectAns(Integer.valueOf(temp.get(i)));
+            // Add question object to arrayList
+            questions.add(j, q);
+            j++;
+            
+        }
+        
+
     }
 
 
