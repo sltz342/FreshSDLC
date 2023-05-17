@@ -230,6 +230,9 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
             lblQText.setText("Score: " + score + "\n Click Submit again to return to main menu and reset the test.");
         }
         
+        if ( k == 1 ) {
+            goMenu = true;
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
