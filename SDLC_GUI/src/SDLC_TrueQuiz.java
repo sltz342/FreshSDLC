@@ -208,10 +208,13 @@ public class SDLC_TrueQuiz extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Setting all buttons and texts to the appr
+     */
     public void nextQuestion() {
         int i = 0;
         lblQNum.setText("Question #" + (i+1));
-        lblQText.setText()
+        lblQText.setText((questions.get(i).getText()));
     }
 
     /**
