@@ -194,17 +194,6 @@ public class SLDC_StudyNotes extends javax.swing.JFrame {
     }
 
     /**
-     * public void fillData() { File f = new
-     * File("src/dataFiles/StudyNotes.txt"); try { Scanner s = new Scanner(f);
-     * while(s.hasNextLine()){ StudyNotesData.add(s.nextLine()); }
-     *
-     * } catch (FileNotFoundException e) { System.out.println("ERROR: " + e); }
-     *
-     * }
-     * marked as a comment incase something fucks up whoopee!!!!!!!!
-     */
-    
-    /**
      * Gets study note information from a text file
      */
     public void fillData() {

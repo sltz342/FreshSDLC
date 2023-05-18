@@ -1,5 +1,6 @@
 /*  Sean M.
-    Generic Menu before quiz, cuz I hate this
+    May 17th, 2023
+    A quick menu that's meant to guide the user to the quiz portion or let them return
  */
 
 /**

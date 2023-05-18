@@ -1,6 +1,6 @@
 /*  Sean M. + Dina M.
     May 11th - 17th, 2023
-    A project about team management but that's not really an issue i bet. no
+    A project that's meant to help out the older sibling study for the SDLC test
 
 /**
  *

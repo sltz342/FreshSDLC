@@ -1,6 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/*  Dina M.
+    May 17th, 2023
+    A menu designed to give credits to the hard larborers of this projects
  */
 
 /**

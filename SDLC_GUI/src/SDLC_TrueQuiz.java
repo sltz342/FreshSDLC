@@ -1,6 +1,6 @@
-/*  Sean M.
+/*  Dina M.
     May 15th, 2023
-    The Actual Quiz Code, this is going to suck to fix
+    The quiz portion of the GUI, using the Questions Class already made.
  */
 
 import classclass.Question;
